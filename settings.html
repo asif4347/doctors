@@ -1,0 +1,794 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Open MRI Center</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+
+
+
+    <link href="assets/css/redactor.css" rel="stylesheet" />
+    <link href="assets/css/AdminLTE.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/ionicons.min.css" rel="stylesheet" />
+    <link href="assets/css/pickmeup.min.css" rel="stylesheet" />
+    <!-- jQuery 2.0.2 -->
+    <script src="assets/js/jquery.js"></script>
+
+    <style>
+        .modal {
+            overflow-y: hidden !important;
+        }
+
+        .navbar-right {
+            background-color: #3c8dbc !important;
+        }
+
+        .modal-body {
+            height: 450px !important;
+            overflow-y: auto !important;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            table {
+                border: 2px solid #999999 !important;
+            }
+        }
+
+
+        @media screen {
+            .no-print {
+                display: block !important;
+            }
+        }
+
+        #overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background: #ffffff;
+            opacity: 0.7;
+            filter: alpha(opacity=80);
+            -moz-opacity: 0.6;
+            z-index: 9999000000000;
+        }
+    </style>
+    <script>
+function call_loader_ajax(){
+
+	if($('#overlay').length == 0 ){
+		var over = '<div id="overlay">' +
+						'<img  style="padding-top:350px; padding-left:50%;"id="loading" src="img/ajax-loader2.gif"></div>';
+
+		$(over).appendTo('body');
+	}
+}
+
+
+    </script>
+</head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header no-print">
+            <a href="http://scripts.webappsdemo.in/doctor/admin/dashboard" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+               Open MRI Center			</a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+						<!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              Language                                <span class="label label-success"></span>                            </a>
+                            <ul class="dropdown-menu">
+                          	 <li>
+						            <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+						
+						
+						
+						
+						
+						
+										 <li><!-- start message -->
+                                            <a href='http://scripts.webappsdemo.in/doctor/admin/languages/switch_language/english/admin/settings//'>
+                                                <div class="pull-left">
+                                                    <img src="http://scripts.webappsdemo.in/doctor/assets/img/eng.png" class="img-circle" alt="User Image"/>
+                                                </div>
+                                                <h4>
+                                                   ENGLISH
+                                                   
+                                                </h4>
+                                      
+                                            </a>
+                                        </li><!-- end message -->
+									                                       
+										<li><!-- start message -->
+                                            <a href='http://scripts.webappsdemo.in/doctor/admin/languages/switch_language/aaa/admin/settings'>
+                                                <div class="pull-left">
+                                                    <img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images" class="img-circle" alt="User Image"/>
+                                                </div>
+                                                <h4>
+                                                    Aaa                                                   
+                                                </h4>
+                                       
+                                            </a>
+                                        </li><!-- end message -->
+										         
+										
+                                        
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                      </li>
+					  
+				
+				
+				
+									  
+
+					  
+					 
+					 
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Admin <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                	
+								 <img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images/avatar5.png"class="img-circle" alt="User Image" />
+								
+                                    <p>
+                                       Admin                                        
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                               
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="http://scripts.webappsdemo.in/doctor/admin/account" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="http://scripts.webappsdemo.in/doctor/admin/login/logout" class="btn btn-default btn-flat">Sign Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+
+
+
+   <div class="wrapper row-offcanvas row-offcanvas-left ">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel no-print">
+                        <div class="pull-left image">
+                             	
+								 <img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images/avatar5.png"class="img-circle" alt="User Image" />
+								                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, Admin</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                   
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="dashboard.html">
+                                <i class="fa fa-dashboard"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="doctors.html">
+                                <i class="fa fa-stethoscope"></i> <span>Practitioners</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="doctor_payment.html">
+                                <i class="fa fa-credit-card"></i> <span>Payment</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="custom_fields.html">
+                                <i class="fa fa-columns"></i> <span>Custom Fields</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="settings.html">
+                                <i class="fa fa-cog"></i> <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="languages.html">
+                                <i class="fa fa-globe"></i> <span>Language</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="financial_reports.html">
+                                <i class="fa fa-line-chart"></i> <span>Financial Reports</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+			
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+			
+						
+            
+    
+<link href="http://scripts.webappsdemo.in/doctor/assets/css/datatables/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="http://scripts.webappsdemo.in/doctor/assets/css/chosen.css" rel="stylesheet" type="text/css" />
+<!-- Content Header (Page header) -->
+<style>
+.row{
+	margin-bottom:10px;
+}
+.chosen-container{width:100% !important}
+</style>
+ <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>General Settings    </h1>
+    <ol class="breadcrumb">
+        <li><a href="http://scripts.webappsdemo.in/doctor/admin"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+      
+        <li class="active">General Settings</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+  
+	   	
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header">
+                   
+                </div><!-- /.box-header -->
+                <!-- form start -->
+				
+			
+				<form method="post" enctype="multipart/form-data" action="http://scripts.webappsdemo.in/doctor/admin/settings"
+                    <div class="box-body">
+						<div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab_1" data-toggle="tab">General Settings</a></li>
+                  				  <li><a href="#tab_2" data-toggle="tab" >Database Backup</a></li>
+				  <li><a href="#tab_3" data-toggle="tab" >Menu Settings</a></li>
+               	 			    </ul>
+                <div class="tab-content">
+                  <div class="tab-pane active" id="tab_1">
+                  		
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Company Name</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="text" name="name" value="Open MRI Center" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Logo</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="file" name="img" value="" class="form-control">
+                                </div>
+								<div class="col-md-4">
+																<img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images/Untitled.png" width="140" height="100" />
+																</div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Header Setting</b>
+								</div>
+								<div class="col-md-6">
+                               		<input type="radio" name="header_setting" value="1" checked /> <b>Company Name</b>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									<input type="radio" name="header_setting" value="2"  /> <b>Logo</b>
+							    </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Address</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<textarea name="address" class="form-control">Hawally</textarea>
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Telephone Number</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="text" name="contact" value="+9652222222" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Email</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="text" name="email" value="support@openmri.com" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+						
+						
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Invoice Number</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="text" name="invoice" value="100" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Session Time (Hours)</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="number" name="session_hours" value="1" min="1" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+												<div class="form-group">
+                              <div class="row">
+                                <div class="col-md-3">
+                                    <label for="contact" style="clear:both;">Default Date Format</label>
+								</div>
+								<div class="col-md-4">
+									<select name="date_format" class="form-control chzn" >
+										<option value="">Select Default Date Format</option>
+										<option value="Y-m-d" >YYYY-mm-dd</option>
+										<option value="d/m/y" >dd/mm/yy</option>
+										<option value="m/d/yy" selected="selected">mm/dd/yy</option>
+										<option value="m/d/y" selected="selected">dd/mm/YYYY</option>
+										<option value="m/d/Y" >mm/dd/YYYY</option>
+									</select>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>All Patient Visible To Practitioner</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="checkbox" name="all_patient_visible" value="1" checked>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>All Patient Visible To Assistant</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="checkbox" name="all_patient_visible_assistant" value="1" checked>
+                                </div>
+                            </div>
+                        </div>
+							
+				  </div><!-- /.tab-pane -->
+                  <div class="tab-pane" id="tab_2">
+                		
+						
+						
+											<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Backup Schedule</b>
+								</div>
+								<div class="col-md-4">
+                                	<select name="backup_type" class="form-control" id="backup_type">
+											<option value="1" >Daily</option>
+											<option value="2" >Weekly</option>
+											<option value="3" selected="selected">Monthly</option>
+									</select>
+								</div>
+								<div class="col-md-4" id="days">
+										<select name="days[]" class="form-control chzn" multiple="multiple" data-placeholder="Select Days" >
+																								<option value="1"  >Mon</option>
+																								<option value="2"  >Tue</option>
+																								<option value="3"  >Wed</option>
+																								<option value="4"  >Thu</option>
+																								<option value="5"  >Fri</option>
+																								<option value="6"  >Sat</option>
+																								<option value="7"  >Sun</option>
+																						</select>
+								</div>
+								<div class="col-md-4" id="day">
+									<select name="day" class="form-control"  >
+												<option value="">--Select Day Of Month--</option>
+																								<option value="1"  >1</option>
+																								<option value="2"  >2</option>
+																								<option value="3"  >3</option>
+																								<option value="4"  >4</option>
+																								<option value="5" selected="selected" >5</option>
+																								<option value="6"  >6</option>
+																								<option value="7"  >7</option>
+																								<option value="8"  >8</option>
+																								<option value="9"  >9</option>
+																								<option value="10"  >10</option>
+																								<option value="11"  >11</option>
+																								<option value="12"  >12</option>
+																								<option value="13"  >13</option>
+																								<option value="14"  >14</option>
+																								<option value="15"  >15</option>
+																								<option value="16"  >16</option>
+																								<option value="17"  >17</option>
+																								<option value="18"  >18</option>
+																								<option value="19"  >19</option>
+																								<option value="20"  >20</option>
+																								<option value="21"  >21</option>
+																								<option value="22"  >22</option>
+																								<option value="23"  >23</option>
+																								<option value="24"  >24</option>
+																								<option value="25"  >25</option>
+																								<option value="26"  >26</option>
+																								<option value="27"  >27</option>
+																								<option value="28"  >28</option>
+																								<option value="29"  >29</option>
+																								<option value="30"  >30</option>
+																						</select>
+								
+								</div>
+							</div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Database Restore</b>
+								</div>
+								<div class="col-md-4">
+                                    
+									<input type="file" name="db" value="" class="form-control">
+                                </div>
+								<div class="col-md-2"><input type="button" name="upload" value="Upload" class=" btn btn-success upload" />
+							</div>
+                        </div>
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Cron Url For Datatbase Backup</b>
+								</div>
+								<div class="col-md-9">
+                                    http://scripts.webappsdemo.in/doctor/admin/cron/database                                </div>
+							</div>
+                        </div>
+						
+						<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Database Backup</b>
+								</div>
+								<div class="col-md-11">
+                                 								 								 <table id="example1" class="table table-bordered table-striped">
+                        
+										<thead>
+											<tr>
+												<th>Database Backup</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tbody >
+																							<tr class="gc_row">
+													<td>backup-on-2017-06-15-06-43-21.sql</td>
+													<td>
+													<a href="http://scripts.webappsdemo.in/doctor/dbbackup/backup-on-2017-06-15-06-43-21.sql" class="btn btn-primary">Download</a>
+													<a href="http://scripts.webappsdemo.in/doctor/admin/settings/deletebackup/backup-on-2017-06-15-06-43-21.sql" class="btn btn-danger" onclick="return confirm('Are You Sure');">Delete</a>
+													</td>
+												</tr>
+																								<tr class="gc_row">
+													<td>backup-on-2017-07-09-18-05-32.sql</td>
+													<td>
+													<a href="http://scripts.webappsdemo.in/doctor/dbbackup/backup-on-2017-07-09-18-05-32.sql" class="btn btn-primary">Download</a>
+													<a href="http://scripts.webappsdemo.in/doctor/admin/settings/deletebackup/backup-on-2017-07-09-18-05-32.sql" class="btn btn-danger" onclick="return confirm('Are You Sure');">Delete</a>
+													</td>
+												</tr>
+																						</tbody>
+								</table>
+																 
+                                </div>
+                            </div>
+                        </div>
+						
+						
+   
+                  </div><!-- /.tab-pane -->
+				 </div><!-- /.tab-content -->
+				 <div class="tab-pane" id="tab_3">
+				  							<div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<b>Menu For</b>
+								</div>
+								<div class="col-md-4">
+                               			<select name="menu_for" class="form-control" id="menu_for">
+											<option  value="1">Practitioner</option>
+											<option  value="2">Assistant</option>
+										</select>     
+							     </div>
+								 <div class="col-md-4" id="d_div">
+								 	<h6>Hide Menu For Practitioner</h6>
+								 		
+										<input type="checkbox" name="doctor_menus[]" value="patients"  /> <label>patients</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="payment"  /> <label>payment</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="prescription"  /> <label>prescription</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="calendar"  /> <label>calendar</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="message"  /> <label>message</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="to_do_list"  /> <label>to_do_list</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="notes"  /> <label>notes</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="contacts" checked /> <label>contacts</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="appointments"  /> <label>appointments</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="hospital"  /> <label>hospital</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="medical_college"  /> <label>medical_college</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="reports"  /> <label>reports</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="settings"  /> <label>settings</label> <br />
+										
+										<input type="checkbox" name="doctor_menus[]" value="adminstrative"  /> <label>adminstrative</label> <br />
+																	 
+								 </div>
+								 <div class="col-md-4" id="a_div">
+								 	<h6>Hide Menu For Assistant</h6>
+								 	
+										<input type="checkbox" name="assistant_menus[]" value="patients"  /> <label>patients</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="payment"  /> <label>payment</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="prescription"  /> <label>prescription</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="calendar"  /> <label>calendar</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="message"  /> <label>message</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="to_do_list"  /> <label>to_do_list</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="notes"  /> <label>notes</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="contacts"  /> <label>contacts</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="appointments"  /> <label>appointments</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="hospital"  /> <label>hospital</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="medical_college"  /> <label>medical_college</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="reports"  /> <label>reports</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="settings"  /> <label>settings</label> <br />
+										
+										<input type="checkbox" name="assistant_menus[]" value="adminstrative"  /> <label>adminstrative</label> <br />
+																	 
+								 </div>
+							</div>
+                        </div>
+						
+									  </div>
+              
+			  </div>
+                        
+						
+						
+						
+								
+                       <div class="box-footer" style="padding-left:25%">
+							<button  type="submit" class="btn btn-primary">Save</button>
+						</div>
+						
+                    </div><!-- /.box-body -->
+    
+                   
+             </form>
+            </div><!-- /.box -->
+        </div>
+     </div>
+</section>  
+
+
+
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/chosen.jquery.min.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/plugins/datatables/jquery.dataTables.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/plugins/datatables/dataTables.bootstrap.js" type="text/javascript"></script>
+
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+	$("#a_div").hide();
+	
+	$('#example1').dataTable({});
+	$('.chzn').chosen();
+	call_loader_ajax();
+	setTimeout(function(){ 
+		  $("#overlay").remove();
+		 var val = $('#backup_type').val();
+    
+		if(val==1){//daily
+			$('#days').hide();
+			$('#day').hide();
+		}
+		if(val==2){//weekly	
+			$('#days').show();
+			$('#day').hide();
+		}   
+		if(val==3){//monthly
+			$('#days').hide();
+			$('#day').show();
+		}
+	}, 3000);	
+});
+
+$(function() {
+	//bootstrap WYSIHTML5 - text editor
+	$(".txtarea").wysihtml5();
+});
+
+ $(function() {
+    $( ".datepicker" ).pickmeup({
+    format  : 'Y-m-d'
+});
+  });
+  
+  
+  
+ $("#backup_type").on('change',function() {   
+    var val = $(this).val();
+    
+	if(val==1){//daily
+		$('#days').hide();
+		$('#day').hide();
+	}
+	if(val==2){//weekly	
+		$('#days').show();
+		$('#day').hide();
+	}   
+	if(val==3){//monthly
+		$('#days').hide();
+		$('#day').show();
+	}
+});  
+
+
+$('body').on('click', '.upload', function(e){
+       e.preventDefault();
+       var formData = new FormData($(this).parents('form')[0]);
+		call_loader_ajax();
+       $.ajax({
+           url: 'http://scripts.webappsdemo.in/doctor/admin/settings/upload_db',
+           type: 'POST',
+           xhr: function() {
+               var myXhr = $.ajaxSettings.xhr();
+               return myXhr;
+           },
+           success: function (data) {
+              // alert("Data Uploaded: "+data);
+  			if(data==1){
+				setTimeout(function(){ location.reload();$("#overlay").remove(); }, 90000);
+				
+			}else{
+				alert(data);
+				$("#overlay").remove();	
+			}
+			
+		   },
+           data: formData,
+           cache: false,
+           contentType: false,
+           processData: false
+       });
+       return false;
+});  
+
+ $("#menu_for").on('change',function() {   
+    var val = $(this).val();
+    
+	if(val==1){//daily
+		$('#d_div').show();
+		$('#a_div').hide();
+	}
+	if(val==2){//weekly	
+		$('#d_div').hide();
+		$('#a_div').show();
+	}   
+});  
+</script></aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+        <!-- jQuery UI 1.10.3 -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+		 <script src="http://scripts.webappsdemo.in/doctor/assets/js/jquery.pickmeup.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+		
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/bootstrap.min.js" type="text/javascript"></script>
+        
+        <!-- iCheck -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        
+        <!-- AdminLTE App -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/AdminLTE/app.js" type="text/javascript"></script>
+		
+
+		
+       
+    </body>
+</html>

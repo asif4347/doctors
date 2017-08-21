@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    <title>Open MRI Center</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+
+
+
+    <link href="assets/css/redactor.css" rel="stylesheet" />
+    <link href="assets/css/AdminLTE.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="assets/css/ionicons.min.css" rel="stylesheet" />
+    <link href="assets/css/pickmeup.min.css" rel="stylesheet" />
+    <!-- jQuery 2.0.2 -->
+    <script src="assets/js/jquery.js"></script>
+
+    <style>
+        .modal {
+            overflow-y: hidden !important;
+        }
+
+        .navbar-right {
+            background-color: #3c8dbc !important;
+        }
+
+        .modal-body {
+            height: 450px !important;
+            overflow-y: auto !important;
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            table {
+                border: 2px solid #999999 !important;
+            }
+        }
+
+
+        @media screen {
+            .no-print {
+                display: block !important;
+            }
+        }
+
+        #overlay {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            background: #ffffff;
+            opacity: 0.7;
+            filter: alpha(opacity=80);
+            -moz-opacity: 0.6;
+            z-index: 9999000000000;
+        }
+    </style>
+    <script>
+function call_loader_ajax(){
+
+	if($('#overlay').length == 0 ){
+		var over = '<div id="overlay">' +
+						'<img  style="padding-top:350px; padding-left:50%;"id="loading" src="img/ajax-loader2.gif"></div>';
+
+		$(over).appendTo('body');
+	}
+}
+
+
+    </script>
+</head>
+    <body class="skin-blue">
+        <!-- header logo: style can be found in header.less -->
+        <header class="header no-print">
+            <a href="dashboard.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+               Open MRI Center			</a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-right">
+                    <ul class="nav navbar-nav">
+						<!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              Language                                <span class="label label-success"></span>                            </a>
+                            <ul class="dropdown-menu">
+                          	 <li>
+						            <!-- inner menu: contains the actual data -->
+                                    <ul class="menu">
+						
+						
+						
+						
+						
+						
+										 <li><!-- start message -->
+                                            <a href='http://scripts.webappsdemo.in/doctor/admin/languages/switch_language/english/admin/financial_reports//'>
+                                                <div class="pull-left">
+                                                    <img src="http://scripts.webappsdemo.in/doctor/assets/img/eng.png" class="img-circle" alt="User Image"/>
+                                                </div>
+                                                <h4>
+                                                   ENGLISH
+                                                   
+                                                </h4>
+                                      
+                                            </a>
+                                        </li><!-- end message -->
+									                                       
+										<li><!-- start message -->
+                                            <a href='http://scripts.webappsdemo.in/doctor/admin/languages/switch_language/aaa/admin/financial_reports'>
+                                                <div class="pull-left">
+                                                    <img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images" class="img-circle" alt="User Image"/>
+                                                </div>
+                                                <h4>
+                                                    Aaa                                                   
+                                                </h4>
+                                       
+                                            </a>
+                                        </li><!-- end message -->
+										         
+										
+                                        
+                                    </ul>
+                                </li>
+                                
+                            </ul>
+                      </li>
+					  
+				
+				
+				
+									  
+
+					  
+					 
+					 
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="glyphicon glyphicon-user"></i>
+                                <span>Admin <i class="caret"></i></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header bg-light-blue">
+                                	
+								 <img src="assets/uploads/avatar5.png"class="img-circle" alt="User Image" />
+								
+                                    <p>
+                                       Admin                                        
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                               
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="http://scripts.webappsdemo.in/doctor/admin/account" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="http://scripts.webappsdemo.in/doctor/admin/login/logout" class="btn btn-default btn-flat">Sign Out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+
+
+
+   <div class="wrapper row-offcanvas row-offcanvas-left ">
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="left-side sidebar-offcanvas">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel no-print">
+                        <div class="pull-left image">
+                             	
+								 <img src="http://scripts.webappsdemo.in/doctor/assets/uploads/images/avatar5.png"class="img-circle" alt="User Image" />
+								                        </div>
+                        <div class="pull-left info">
+                            <p>Hello, Admin</p>
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+                   
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="active">
+                            <a href="dashboard.html">
+                                <i class="fa fa-dashboard"></i> <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="doctors.html">
+                                <i class="fa fa-stethoscope"></i> <span>Practitioners</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="doctor_payment.html">
+                                <i class="fa fa-credit-card"></i> <span>Payment</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="custom_fields.html">
+                                <i class="fa fa-columns"></i> <span>Custom Fields</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="settings.html">
+                                <i class="fa fa-cog"></i> <span>Settings</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="languages.html">
+                                <i class="fa fa-globe"></i> <span>Language</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="financial_reports.html">
+                                <i class="fa fa-line-chart"></i> <span>Financial Reports</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+			
+ <!-- Right side column. Contains the navbar and content of the page -->
+            <aside class="right-side">
+			
+						
+            
+    
+<link href="http://scripts.webappsdemo.in/doctor/assets/css/jquery.datetimepicker.css" rel="stylesheet" type="text/css" />
+<link href="http://scripts.webappsdemo.in/doctor/assets/css/chosen.css" rel="stylesheet" type="text/css" />
+<!-- Content Header (Page header) -->
+<style>
+.row{
+	margin-bottom:10px;
+}
+#month-chart > svg {width: 100% !important;}
+</style>
+ <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>Reports</h1>
+    <ol class="breadcrumb">
+        <li><a href="http://scripts.webappsdemo.in/doctor/admin/dashboard"><i class="fa fa-dashboard"></i> Dasbhoard</a></li>
+        <li class="active">Financial Reports</li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <div class="box-header">
+                   
+                </div><!-- /.box-header -->
+                <!-- form start -->
+			       <div class="box-body">
+				   	<form method="post">
+					
+                       <div class="form-group">
+                        	<div class="row">
+                                <div class="col-md-3">
+                                	<select name="doctor_id" class="form-control" required>
+											<option value="">--Select Practitioner</option>
+																							<option value="61" >sadhu</option>
+																							<option value="6854" >Dr. Jonathan</option>
+																							<option value="6857" >General</option>
+																							<option value="6858" >Md Asif</option>
+																							<option value="6860" >allen</option>
+																							<option value="6862" >kenneth</option>
+																							<option value="6887" >kushi</option>
+																							<option value="6905" >Dr. Mashhoor Gulati</option>
+																							<option value="6907" >Nilesh Misra</option>
+																							<option value="6918" >Gabrielux Practitioner</option>
+																							<option value="6923" >Yasir Hameed</option>
+																							<option value="6934" >shiva</option>
+																							<option value="6940" >dd</option>
+																							<option value="6943" >Bruno Duuis</option>
+																							<option value="6948" >Rafath</option>
+																							<option value="6950" >ffd</option>
+																							<option value="6980" >shashi</option>
+																							<option value="6981" >Teste Rafa</option>
+																							<option value="6989" >Hammad</option>
+																							<option value="6993" >Aa</option>
+																				</select>
+								</div>
+								<div class="col-md-3">
+                                	<input type="text" name="date1" value="" class="form-control datepicker" placeholder="Date From" required />
+								</div>
+								<div class="col-md-3">
+                                	<input type="text" name="date2" value="" class="form-control datepicker" placeholder="Date Till" required />
+								</div>
+								<div class="col-md-2">
+									<input type="submit" name="get" value="Get" class=" btn btn-primary" />
+								</div>
+							</div>
+                        </div>
+					 </form>
+					 						
+                    </div><!-- /.box-body -->
+    
+             </form>
+            </div><!-- /.box -->
+        </div>
+     </div>
+</section>  
+
+
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/jquery.datetimepicker.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/chosen.jquery.min.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/raphael-min.js" type="text/javascript"></script>
+<script src="http://scripts.webappsdemo.in/doctor/assets/js/morris.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+	jQuery('.datepicker').datetimepicker({
+	 lang:'en',
+	 i18n:{
+	  de:{
+	   months:[
+		'Januar','Februar','M�rz','April',
+		'Mai','Juni','Juli','August',
+		'September','Oktober','November','Dezember',
+	   ],
+	   dayOfWeek:[
+		"So.", "Mo", "Di", "Mi", 
+		"Do", "Fr", "Sa.",
+	   ]
+	  }
+	 },
+	 timepicker:false,
+	 format:'Y-m-d'
+	});
+	/* Morris.js Charts */
+    // Sales chart
+   
+    var line = new Morris.Line({
+        element: 'line-chart',
+        resize: true,
+        data: [	
+		],
+        xkey: 'date',
+        ykeys: ['amount'],
+        labels: ['Amount'],
+        lineColors: ['#efefef'],
+        lineWidth: 2,
+		parseTime:false,
+        hideHover: 'auto',
+        gridTextColor: "#fff",
+        gridStrokeWidth: 0.4,
+        pointSize: 4,
+        pointStrokeColors: ["#efefef"],
+        gridLineColor: "#efefef",
+        gridTextFamily: "Open Sans",
+        gridTextSize: 10
+    });
+	
+	
+	
+	
+});
+
+
+
+</script></aside><!-- /.right-side -->
+    </div><!-- ./wrapper -->
+
+        <!-- jQuery UI 1.10.3 -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/jquery-ui-1.10.3.min.js" type="text/javascript"></script>
+		 <script src="http://scripts.webappsdemo.in/doctor/assets/js/jquery.pickmeup.min.js" type="text/javascript"></script>
+        <!-- Bootstrap -->
+		
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/bootstrap.min.js" type="text/javascript"></script>
+        
+        <!-- iCheck -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
+        
+        <!-- AdminLTE App -->
+        <script src="http://scripts.webappsdemo.in/doctor/assets/js/AdminLTE/app.js" type="text/javascript"></script>
+		
+
+		
+       
+    </body>
+</html>
